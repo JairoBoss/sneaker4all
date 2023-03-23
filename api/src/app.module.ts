@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { SeedModule } from './seed/seed.module';
 import { CommonModule } from './common/common.module';
 import { LoggerMiddleware } from './utils/logger.middleware';
+import { ProductsModule } from './products/products.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { LoggerMiddleware } from './utils/logger.middleware';
     UserModule,
     SeedModule,
     CommonModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],

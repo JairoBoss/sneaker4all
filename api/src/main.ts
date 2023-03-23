@@ -9,9 +9,6 @@ async function bootstrap() {
 
   const logger = new Logger('Bootstrap');
 
-  // TODO : Acompletar el seed y hacer un metodo estatiuco para no instanciar la clase
-  // Y poner el logger chido
-
   app.enableCors({
     origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',

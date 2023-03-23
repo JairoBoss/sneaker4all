@@ -23,13 +23,13 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Post()
-  @Auth(ValidRoles.superUser, ValidRoles.admin)
+  @Auth(ValidRoles.admin)
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
   @Get()
-  @Auth(ValidRoles.superUser, ValidRoles.admin)
+  @Auth(ValidRoles.admin)
   findAll(@Query() paginationDto: PaginationDto) {
     return this.userService.findAll(paginationDto);
   }
