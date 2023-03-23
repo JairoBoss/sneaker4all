@@ -7,6 +7,12 @@ import { SeedModule } from './seed/seed.module';
 import { CommonModule } from './common/common.module';
 import { LoggerMiddleware } from './utils/logger.middleware';
 import { ProductsModule } from './products/products.module';
+import { CategoryModule } from './category/category.module';
+import { ProductModule } from './product/product.module';
+import { StockModule } from './stock/stock.module';
+import { ExchangeModule } from './exchange/exchange.module';
+import { SaleModule } from './sale/sale.module';
+import { RoleModule } from './role/role.module';
 
 @Module({
   imports: [
@@ -26,6 +32,12 @@ import { ProductsModule } from './products/products.module';
     SeedModule,
     CommonModule,
     ProductsModule,
+    CategoryModule,
+    ProductModule,
+    StockModule,
+    ExchangeModule,
+    SaleModule,
+    RoleModule,
   ],
   controllers: [],
   providers: [],
