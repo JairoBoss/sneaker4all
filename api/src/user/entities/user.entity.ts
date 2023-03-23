@@ -1,9 +1,15 @@
+import { Auction } from 'src/auction/entities/auction.entity';
+import { Product } from 'src/product/entities/product.entity';
+import { Role } from 'src/role/entities/role.entity';
+import { Sale } from 'src/sale/entities/sale.entity';
 import {
   BeforeInsert,
   BeforeUpdate,
   Column,
   CreateDateColumn,
   Entity,
+  ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -25,8 +31,23 @@ export class User {
   @Column({ type: 'bool', default: true })
   isActive: boolean;
 
-  @Column({ type: 'text', array: true, default: ['user'] })
-  roles: string[];
+  @OneToMany(() => Role, role => role.users)
+  role: Role;
+  
+  @OneToMany(() => Product, product => product.user)
+  products: Product;
+  
+  @OneToMany(() => Sale, sale => sale.buyer)
+  buyerSales: Sale;
+  
+  @OneToMany(() => Sale, sale => sale.seller)
+  sellerSales: Sale;
+  
+  @OneToMany(() => Auction, auction => auction.winner)
+  wonAuction: Auction;
+  
+  @OneToMany(() => Auction, auction => auction.blocked)
+  blockedAuction: Auction;
 
   @CreateDateColumn()
   createdAt: Date;

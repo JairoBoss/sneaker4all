@@ -1,9 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from './auth/auth.module';
+
 import { UserModule } from './user/user.module';
-import { SeedModule } from './seed/seed.module';
 import { CommonModule } from './common/common.module';
 import { LoggerMiddleware } from './utils/logger.middleware';
 import { ProductsModule } from './products/products.module';
@@ -13,6 +12,7 @@ import { StockModule } from './stock/stock.module';
 import { ExchangeModule } from './exchange/exchange.module';
 import { SaleModule } from './sale/sale.module';
 import { RoleModule } from './role/role.module';
+import { AuctionModule } from './auction/auction.module';
 
 @Module({
   imports: [
@@ -27,9 +27,8 @@ import { RoleModule } from './role/role.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    AuthModule,
     UserModule,
-    SeedModule,
+    // SeedModule,
     CommonModule,
     ProductsModule,
     CategoryModule,
@@ -38,6 +37,7 @@ import { RoleModule } from './role/role.module';
     ExchangeModule,
     SaleModule,
     RoleModule,
+    AuctionModule,
   ],
   controllers: [],
   providers: [],

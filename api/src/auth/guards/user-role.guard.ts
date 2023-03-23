@@ -28,11 +28,11 @@ export class UserRoleGuard implements CanActivate {
 
     if (!user) throw new BadRequestException('Usuario no encontrado');
 
-    for (const role of user.roles) {
-      if (validRoles.includes(role)) {
-        return true;
-      }
-    }
+    // for (const role of user.roles) {
+    //   if (validRoles.includes(role)) {
+    //     return true;
+    //   }
+    // }
     throw new ForbiddenException(
       `User: ${user.fullName} no tiene los permisos necesarios`,
     );
