@@ -1,1 +1,5 @@
-export class CreateExchangeDto {}
+export class CreateExchangeDto {
+    productRequesterId: string;
+    
+    productOwnerId: string;
+}

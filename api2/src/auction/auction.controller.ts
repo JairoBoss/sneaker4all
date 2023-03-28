@@ -19,16 +19,16 @@ export class AuctionController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.auctionService.findOne(+id);
+    return this.auctionService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAuctionDto: UpdateAuctionDto) {
-    return this.auctionService.update(+id, updateAuctionDto);
+    return this.auctionService.update(id, updateAuctionDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.auctionService.remove(+id);
+    return this.auctionService.remove(id);
   }
 }

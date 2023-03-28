@@ -31,7 +31,7 @@ export class User {
   @Column({ type: 'bool', default: true })
   isActive: boolean;
 
-  @OneToMany(() => Role, role => role.users)
+  @ManyToOne(type => Role, role => role.users)
   role: Role;
   
   @OneToMany(() => Product, product => product.user)

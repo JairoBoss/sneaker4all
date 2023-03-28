@@ -1,26 +1,47 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Product } from 'src/product/entities/product.entity';
+import { Repository } from 'typeorm';
 import { CreateExchangeDto } from './dto/create-exchange.dto';
 import { UpdateExchangeDto } from './dto/update-exchange.dto';
+import { Exchange } from './entities/exchange.entity';
 
 @Injectable()
 export class ExchangeService {
+  constructor(
+    @InjectRepository(Exchange)
+    private readonly exchangeRepository: Repository<Exchange>,
+  ) {}
   create(createExchangeDto: CreateExchangeDto) {
-    return 'This action adds a new exchange';
+    const { productRequesterId, productOwnerId} = createExchangeDto;
+
+    const exchange = new Exchange();
+    
+    exchange.productRequester = {id: productRequesterId} as Product;    
+    exchange.productOwner = {id: productOwnerId} as Product;        
+    
+    return this.exchangeRepository.save(exchange);
   }
 
   findAll() {
-    return `This action returns all exchange`;
+    return this.exchangeRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} exchange`;
+  findOne(id: string) {
+    return this.exchangeRepository.find({where: {id: id}});
   }
 
-  update(id: number, updateExchangeDto: UpdateExchangeDto) {
-    return `This action updates a #${id} exchange`;
+  async update(id: string, updateExchangeDto: UpdateExchangeDto) {
+    const { productRequesterId, productOwnerId} = updateExchangeDto;
+
+    const exchange = await this.exchangeRepository.findOne({where: {id: id}});    
+    exchange.productRequester = {id: productRequesterId} as Product;    
+    exchange.productOwner = {id: productOwnerId} as Product;        
+    
+    return this.exchangeRepository.save(exchange);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} exchange`;
+  async remove(id: string) {
+    await this.exchangeRepository.delete(id);
   }
 }

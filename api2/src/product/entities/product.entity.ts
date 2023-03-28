@@ -22,7 +22,7 @@ export class Product {
   @ManyToOne(() => Category, (category) => category.products)
   category: Category;
 
-  @ManyToOne(() => Stock, (stock) => stock.products)
+  @ManyToOne(() => Stock, (stock) => stock.product)
   stock: Stock;
 
   @ManyToOne(() => Sale, (sale) => sale.product)
@@ -33,9 +33,6 @@ export class Product {
 
   @ManyToOne(() => Auction, (auction) => auction.product)
   auction: Auction;
-
-  @Column({ type: 'varchar' })
-  id_category: string;
 
   @Column({ type: 'varchar' })
   slug: string;

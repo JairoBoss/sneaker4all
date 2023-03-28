@@ -19,8 +19,8 @@ export class Category {
   description: string;
 
   @ManyToOne(() => Product, (product) => product.category, {
-    eager: true, //Cargar la relacion
-    nullable: false,
+    eager: true, 
+    nullable: true,
   })
   @JoinColumn({ name: 'product_id', referencedColumnName: 'id' })
   products: Product;

@@ -6,7 +6,7 @@ export class Stock {
   id: string;
 
   @ManyToOne(() => Product, product => product.stock)
-  products: Product;
+  product: Product;
 
   @Column({ type: 'numeric' })
   quantity: number;
